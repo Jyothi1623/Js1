@@ -1,0 +1,30 @@
+<h2>Add to Cart</h2>
+    <div class="inp">
+  <input id="item" placeholder="Add item">
+  <button onclick="add()">Add</button>
+  </div>
+  <ul id="list"></ul>
+  </div>
+  </div>
+
+   
+    <script>
+        function add() {
+      let input = document.getElementById("item");
+      let item = input.value.trim();
+      if (item === "") return;
+
+      let li = document.createElement("li");
+      li.innerHTML = item + ' <button onclick="removeItem(this)">x</button>';
+      document.getElementById("list").appendChild(li);
+      input.value = "";
+    }
+      function removeItem(btn) {
+      btn.parentElement.remove();
+    }  
+        
+
+
+        
+
+    </script>

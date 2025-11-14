@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Toss </title>
+  <style>
+    img{
+        height: 400px;
+        width: 900px;
+    }
+  </style>
+ 
+</head>
+<body>
+
+  <h1>Coin Toss App</h1>
+
+  <button onclick="tossCoin()">Toss Coin</button>
+
+  <br><br>
+  <img name="coinImg" src="" alt="Coin side will appear here">
+  <h2 name="coinResult"></h2>
+
+  <script>
+    function tossCoin() {
+      var num = Math.floor(Math.random() * 10);
+      console.log("Random number:", num);
+
+      if (num % 2 === 0) {
+        document.coinImg.src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSoyY6selqTxxQMlR0OmD4LehmRYaaUi5GAP4a9ZPtXhY6R25-HbEp-wpGYBGwtKlewIpQ&usqp=CAU"
+        document.coinResult.innerHTML = "It's Heads!";
+      } else {
+        document.coinImg.src = "https://www.tezbid.com/cdn/shop/products/LB19-01Reverse_2048x.jpg?v=1604584929";
+        document.coinResult.innerHTML = " It's Tails!";
+      }
+    }
+  </script>
+
+</body>
+</html>

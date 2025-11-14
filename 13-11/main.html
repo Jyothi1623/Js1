@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+</head>
+<body>
+    <h1>Registration Form For Users</h1>
+    <form id="form">
+        <input type="text" id="name" placeholder="Enter Name here"><br>
+        <input type="text" id="age" placeholder="Enter Name age"><br>
+        <select>
+            <option >male</option>
+             <option >female</option>
+        </select><br>
+        <button> Submit </button>
+
+    </form>
+    <script>
+        let ele=document.getElementById("form")
+        ele.addEventListener("submit",function(){
+            console.log(ele)
+          let name_ele=document.getElementById("name")
+          name_ele.addEventListener("name", function(){
+            console.log(name_ele)
+          let age_ele=document.getElementById("age")
+         age_ele.addEventListener("age", function(){
+            console.log(age_ele)
+
+          })
+        })
+       })
+    </script>
+    
+</body>
+</html>
