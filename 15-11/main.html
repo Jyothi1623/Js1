@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<div id="app"></div>
+
+<script>
+
+let app = document.getElementById("app");
+app.style.width = "400px";
+app.style.margin = "50px auto";
+app.style.fontFamily = "Arial";
+
+let container = document.createElement("div");
+container.style.padding = "20px";
+container.style.border = "1px solid lightblue";
+container.style.borderRadius = "10px";
+container.style.boxShadow = "0px 0px 10px black";
+app.appendChild(container);
+
+let inputRow = document.createElement("div");
+inputRow.style.display = "flex";
+inputRow.style.gap = "10px";
+container.appendChild(inputRow);
+
+var input = document.createElement("input");
+input.type = "text";
+input.placeholder = "Enter item";
+input.style.flex = "1";
+input.style.padding = "8px";
+input.style.border = "1px solid green";
+input.style.borderRadius = "5px";
+input.style.backgroundColor = "lightgray";
+inputRow.appendChild(input);
+
+let addBtn = document.createElement("button");
+addBtn.innerHTML = "Add";
+addBtn.style.padding = "8px 15px";
+addBtn.style.border = "1px solid green";
+addBtn.style.borderRadius = "5px";
+addBtn.style.cursor = "pointer";
+addBtn.style.backgroundColor = "lightgreen";
+inputRow.appendChild(addBtn);
+
+let msg = document.createElement("p");
+msg.style.color = "red";
+msg.style.margin = "5px 0 10px 0";
+container.appendChild(msg);
+
+let listDiv = document.createElement("div");
+container.appendChild(listDiv);
+
+let clearBtn = document.createElement("button");
+clearBtn.innerHTML = "Clear All";
+clearBtn.style.marginTop = "20px";
+clearBtn.style.padding = "10px 25px";
+clearBtn.style.border = "1px solid green";
+clearBtn.style.borderRadius = "8px";
+clearBtn.style.cursor = "pointer";
+clearBtn.style.backgroundColor = "lightblue";
+container.appendChild(clearBtn);
+
+
+
+let items = [];
+
+addBtn.onclick = function () {
+    var value = input.value.trim();
+    msg.innerHTML = "";
+
+    if (value === "") {
+        msg.innerHTML = "Please enter something!";
+        return;
+    }
+
+    if (items.indexOf(value) !== -1) {
+        msg.innerHTML = "Item already exists!";
+        return;
+    }
+
+    items.push(value);
+    input.value = "";
+    updateUI();
+};
+
+function updateUI() {
+    listDiv.innerHTML = "";
+
+    for (let i = 0; i < items.length; i++) {
+        let row = document.createElement("div");
+        row.style.display = "flex";
+        row.style.justifyContent = "space-between";
+        row.style.alignItems = "center";
+        row.style.padding = "10px";
+        row.style.marginTop = "8px";
+        row.style.border = "1px solid black";
+        row.style.borderRadius = "6px";
+        row.style.backgroundColor = "orange";
+
+        let label = document.createElement("span");
+        label.innerHTML = (i + 1) + ".  " + items[i];
+        row.appendChild(label);
+
+        let del = document.createElement("button");
+        del.innerHTML = "Delete";
+        del.style.padding = "5px 10px";
+        del.style.border = "1px solid #ccc";
+        del.style.borderRadius = "5px";
+        del.style.backgroundColor = "lightyellow";
+        del.style.cursor = "pointer";
+        del.setAttribute("data-index", i);
+
+        del.onclick = function () {
+            let index = this.getAttribute("data-index");
+            items.splice(index, 1);
+            updateUI();
+        };
+
+        row.appendChild(del);
+        listDiv.appendChild(row);
+    }
+}
+
+clearBtn.onclick = function () {
+    items = [];
+    updateUI();
+};
+document.body.style.backgroundColor="lightpink"
+
+</script>
+
+</body>
+</html>
