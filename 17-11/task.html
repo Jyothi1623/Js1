@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>todo-array</title>
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        #BTN{
+            display: flex;
+            gap: 30px;
+            margin-top: 30px;
+        }
+        p{
+            display: flex;
+            gap: 25px;
+            margin-top: 25px;
+            border: 2px solid black;
+            padding: 20px;
+            border-radius: 9px;
+           
+        }
+
+    </style>
+</head>
+<body>
+    <h1> Arrays List</h1>
+    <input type="text" placeholder="Enter an item" id="in1">
+    <div>
+        <button id="btn1" onclick="Add_first()">Add First</button>
+        <button id="btn2" onclick="Add_last()">Add last</button>
+        
+    </div>
+    <div>
+        <button  id="btn3" onclick="delete_First()"> Delete First</button>
+        <button  id="btn4"onclick="delete_last()">Delete Last</button>
+    </div>
+    <p >
+         Apple  Banana  Strawberry  Mango  Grapes
+    </p>
+
+<script>
+    let div_ele=document.createElement("div")
+    var arr=[]
+    let ele=document.createElement("div")
+    let in_ele=document.getElementById("in1")
+    function Add_first(){
+        div_ele.innerHTML=""
+        arr.unshift(in_ele.value)
+        for(let i of arr){
+            let ele=document.createElement("p")
+            ele.innerHTML=i
+            div_ele.append(ele)
+            in_ele.value=""
+        }
+        
+    }
+    function Add_last(){
+        div_ele.innerHTML=""
+        arr.push(in_ele.value)
+        for (let i of arr){
+            let ele=document.createElement("p")
+            ele.innerHTML=i
+            div_ele.appendChild(ele)
+            in_ele.value=""
+        }
+        
+    }
+    function delete_First(){
+        arr.shift()
+        div_ele.innerHTML=""
+        for (let i of arr){
+            let ele=document.createElement("p")
+            ele.innerHTML=i
+            div_ele.append(ele)
+
+        }
+        
+
+    }
+
+    function delete_last(){
+        arr.pop()
+        div_ele.innerHTML=""
+        for(let i of arr){
+            let ele=document.createElement("p")
+            ele.innerHTML=i
+            div_ele.append(ele)
+
+        }
+    }
+    document.body.appendChild(div_ele)
+
+
+    
+</script>
+    
+</body>
+</html>

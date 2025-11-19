@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>to-do-list using array</title>
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            background-color:pink;
+        }
+        #btn{
+            background-color:lightgreen;
+            color:black;
+        }
+        input{
+            background-color: darkgrey;
+            
+        }
+    </style>
+</head>
+<body>
+    <h1> Add Your Items</h1>
+    <div>
+        <input type="text" placeholder="add your items" > 
+        <button id="btn" onclick="Add()"> Add</button>
+    
+
+    </div>
+    <div id="container"></div>
+    <script>
+        let arr=["Paneer","Vegbiryani","Butternans","Icecream"]
+        function Add(){
+           let user_in= document.getElementsByTagName("input")
+           arr.push(user_in[0].value)
+           console.log(arr)
+           user_in[0].value=""
+           display_items()
+        }
+        function display_items(){
+            let container=document.getElementById("container")
+            container.innerHTML=""
+             for (let i=0;i<arr.length;i++){
+            let ele=document.createElement("div")
+            let delete_btn=document.createElement("button")
+            delete_btn.style.backgroundColor="lightblue"
+            delete_btn.onclick=function(){
+                arr.splice(i,1)
+                display_items()
+            }
+            delete_btn.innerText="delete"
+
+            ele.innerText=arr[i]
+            ele.appendChild(delete_btn)
+            container.appendChild(ele)
+            console.log(arr[i])
+           }
+        }
+        display_items()
+
+
+
+        
+            
+    </script>
+    
+</body>
+</html>
